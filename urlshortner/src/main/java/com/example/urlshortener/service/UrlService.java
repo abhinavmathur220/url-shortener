@@ -19,7 +19,10 @@ public class UrlService {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    public String shortenUrl(String longUrl) {
+    public String shortenUrl(String longUrl) throws IllegalArgumentException {
+        if (!longUrl.startsWith("http://") && !longUrl.startsWith("https://")) {
+            throw new IllegalArgumentException("URL must start with http:// or https://");
+        }
         String shortCode = UUID.randomUUID().toString().substring(0, 8);
         UrlMapping mapping = new UrlMapping();
         mapping.setShortCode(shortCode);

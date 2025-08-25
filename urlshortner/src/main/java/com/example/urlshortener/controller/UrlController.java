@@ -23,10 +23,11 @@ public class UrlController
         return ResponseEntity.ok(Map.of("shortCode", shortCode));
     }
     @GetMapping("/{shortCode}")
-    public RedirectView redirect(@PathVariable String shortCode) 
-    {
+    public ResponseEntity<?> redirect(@PathVariable String shortCode) {
         return urlService.getLongUrl(shortCode)
-                .map(RedirectView::new)
-                .orElseThrow(() -> new RuntimeException("Short URL not found"));
+                .map(url -> ResponseEntity.status(302)
+                        .header("Location", url)
+                        .build())
+                .orElse(ResponseEntity.notFound().build());
     }
 }

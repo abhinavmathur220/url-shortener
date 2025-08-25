@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "url_mapping")
-public class UrlMapping 
+public class UrlMapping
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
