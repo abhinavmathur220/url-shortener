@@ -9,6 +9,7 @@ It allows you to shorten long URLs into short codes and retrieve the original UR
 - Generate short codes for long URLs
 - Fast lookup using **Redis cache**
 - Persistent storage in **MySQL**
+- Rate Limiting usind Redis
 - REST API endpoints for shortening and retrieving URLs
 - Configurable TTL (default: 1 day) for cache entries
 
